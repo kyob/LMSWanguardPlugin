@@ -1,0 +1,17 @@
+{block name="nodeinfobox-leftcolumn" append}
+    <tr>
+        <td>
+            {icon name="routed" class="lms-ui-button-clipboard fa-fw"}
+        </td>
+        <td>
+            {trans("Wanguard")}
+        </td>
+        <td>
+            <ol>
+                {foreach from=$nodeinfo.wanguard item=wanguard}
+                    <li><strong>{$wanguard.until|date_format:"%Y-%m-%d %H:%M:%S"}</strong> {trans("anomaly")} <a href="{ConfigHelper::getConfig('wanguard.wanguard_url')}/wanguard/#Anomaly={$wanguard.anomaly_id}"><strong>{$wanguard.anomaly_id}</strong></a> {trans("direction")} <strong>{$wanguard.direction}</strong> {trans("type")} <strong>{$wanguard.anomaly}</strong></li>
+                {/foreach}
+            </ol>
+        </td>
+    </tr>
+{/block}

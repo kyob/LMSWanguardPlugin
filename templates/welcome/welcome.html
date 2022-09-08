@@ -1,0 +1,49 @@
+{block name="extra-panel" append}
+    <table class="lmsbox" id="lms-ui-welcome-box-wanguard">
+        <thead>
+            <tr onclick="showOrHide('welcome_wanguard');">
+                <th class="text-center">
+                    <i class="fas fa-bolt"></i> {trans('Wanguard')} - {trans('recent anomalies')}
+                </th>
+            </tr>
+        </thead>
+        <tbody id="welcome_wanguard">
+            <tr>
+                <td>
+                    <table class="lmsbox lms-ui-background-cycle">
+                        <colgroup>
+                            <col style="width: 15%;">
+                            <col style="width: 15%;">
+                            <col style="width: 15%;">
+                            <col style="width: 15%;">
+                            <col style="width: 15%;">
+                            <col style="width: 40%;">
+                        </colgroup>
+                        <thead>
+                            <tr class="text-center">
+                                <th>{trans("Date")}</th>
+                                <th>{trans("ID")}</th>
+                                <th>{trans("Anomaly")}</th>
+                                <th>{trans("Direction")}</th>
+                                <th>{trans("IP")}</th>
+                                <th>{trans("Location")}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach from=$wanguards item=anomaly}
+                                <tr class="highlight text-center">
+                                    <td>{$anomaly.until|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+                                    <td><a href="{ConfigHelper::getConfig('wanguard.wanguard_url')}/wanguard/#Anomaly={$anomaly.anomaly_id}">{$anomaly.anomaly_id}</a></td>
+                                    <td>{$anomaly.anomaly}</td>
+                                    <td>{$anomaly.direction}</td>
+                                    <td><a href="{ConfigHelper::getConfig('wanguard.lms_url')}/?m=nodeinfo&id={$anomaly.node_id}">{$anomaly.ipaddr|long2ip}</a></td>
+                                    <td>{$anomaly.location}</td>
+                                </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{/block}

@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+*/30 * * * * root php /var/www/html/lms/plugins/LMSWanguardPlugin/bin/lms-wanguard-update-db.php
