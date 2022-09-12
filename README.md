@@ -1,4 +1,4 @@
-# Wanguard plugin dla LMS
+# Wanguard plugin for LMS
 
 List last network incidents reported by Wanguard.
 
